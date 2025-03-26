@@ -1,0 +1,10 @@
+^D:\MAJORPROJECT\LAPRO\VAPP\BUILD\WINDOWS\X64\CMAKEFILES\2C7A391F7558E2122F650C06DC2C3BA9\INSTALL_FORCE.RULE
+setlocal
+cd .
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

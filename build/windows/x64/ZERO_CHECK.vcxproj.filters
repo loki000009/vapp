@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\majorproject\lapro\vapp\build\windows\x64\CMakeFiles\2c7a391f7558e2122f650c06dc2c3ba9\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{C1F88732-3611-3114-BA2C-B7D06CA683AF}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
