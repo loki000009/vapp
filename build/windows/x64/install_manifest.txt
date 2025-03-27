@@ -3,11 +3,13 @@ D:/majorproject/lapro/vapp/build/windows/x64/runner/Debug/flutter_windows.dll
 D:/majorproject/lapro/vapp/build/windows/x64/runner/Debug/share_plus_plugin.dll
 D:/majorproject/lapro/vapp/build/windows/x64/runner/Debug/url_launcher_windows_plugin.dll
 D:/majorproject/lapro/vapp/build/windows/x64/runner/Debug/data/flutter_assets/AssetManifest.bin
+D:/majorproject/lapro/vapp/build/windows/x64/runner/Debug/data/flutter_assets/AssetManifest.bin.json
 D:/majorproject/lapro/vapp/build/windows/x64/runner/Debug/data/flutter_assets/AssetManifest.json
 D:/majorproject/lapro/vapp/build/windows/x64/runner/Debug/data/flutter_assets/FontManifest.json
 D:/majorproject/lapro/vapp/build/windows/x64/runner/Debug/data/flutter_assets/fonts/MaterialIcons-Regular.otf
 D:/majorproject/lapro/vapp/build/windows/x64/runner/Debug/data/flutter_assets/kernel_blob.bin
 D:/majorproject/lapro/vapp/build/windows/x64/runner/Debug/data/flutter_assets/NativeAssetsManifest.json
+D:/majorproject/lapro/vapp/build/windows/x64/runner/Debug/data/flutter_assets/NOTICES
 D:/majorproject/lapro/vapp/build/windows/x64/runner/Debug/data/flutter_assets/NOTICES.Z
 D:/majorproject/lapro/vapp/build/windows/x64/runner/Debug/data/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf
 D:/majorproject/lapro/vapp/build/windows/x64/runner/Debug/data/flutter_assets/packages/flutter_material_design_icons/assets/materialdesignicons-webfont.ttf

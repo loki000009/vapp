@@ -12,26 +12,35 @@ class DataAnalysis {
   });
 
   factory DataAnalysis.fromJson(Map<String, dynamic> json) {
+    // Handle potential null or missing values in the response
     return DataAnalysis(
-      dataTypes: Map<String, String>.from(json['data_types']),
-      visualizationSuggestions: Map<String, List<String>>.from(
-        json['visualization_suggestions'].map(
-          (key, value) => MapEntry(key, List<String>.from(value)),
-        ),
-      ),
-      statistics: Map<String, Map<String, dynamic>>.from(
-        json['statistics'].map(
-          (key, value) => MapEntry(key, Map<String, dynamic>.from(value)),
-        ),
-      ),
-      correlations: Map<String, Map<String, double>>.from(
-        json['correlations'].map(
-          (key, value) => MapEntry(
-            key,
-            Map<String, double>.from(value),
-          ),
-        ),
-      ),
+      dataTypes: json['data_types'] != null 
+        ? Map<String, String>.from(json['data_types']) 
+        : {},
+      visualizationSuggestions: json['visualization_suggestions'] != null 
+        ? Map<String, List<String>>.from(
+            json['visualization_suggestions'].map(
+              (key, value) => MapEntry(key, List<String>.from(value)),
+            ),
+          )
+        : {},
+      statistics: json['statistics'] != null 
+        ? Map<String, Map<String, dynamic>>.from(
+            json['statistics'].map(
+              (key, value) => MapEntry(key, Map<String, dynamic>.from(value)),
+            ),
+          )
+        : {},
+      correlations: json['correlations'] != null 
+        ? Map<String, Map<String, double>>.from(
+            json['correlations'].map(
+              (key, value) => MapEntry(
+                key,
+                Map<String, double>.from(value),
+              ),
+            ),
+          )
+        : {},
     );
   }
 }
