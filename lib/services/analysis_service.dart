@@ -1,59 +1,35 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:csv/csv.dart';
-import 'package:excel/excel.dart';
-import 'dart:io';
-import 'package:vapp/models/analysis_model.dart'; // Import DataAnalysis model
+import '../models/analysis_model.dart';
+import '../services/file_service.dart';
 
 class AnalysisService {
-  static const String baseUrl = 'https://windsurf-backend.onrender.com/api';
-  static const int maxFileSize = 10485760; // 10MB to match backend
+  final String backendUrl = "http://127.0.0.1:5000/api/analyze"; // Flask API endpoint
 
-  Future<DataAnalysis> analyzeFile(String filePath, {Function(double)? onProgress}) async {
+  Future<DataAnalysis?> analyzeFile(String filePath, {required void Function(dynamic progress) onProgress}) async {
     try {
-      final file = File(filePath);
-      final fileSize = await file.length();
+      final fileService = FileService();
+      final data = await fileService.importData();
 
-      if (fileSize > maxFileSize) {
-        throw Exception('File size exceeds 10MB limit');
-      }
+      // Convert data to JSON string
+      final dataJson = jsonEncode({"data": data});
 
-      // Parse the file locally
-      List<List<dynamic>> data;
-      if (filePath.endsWith('.csv')) {
-        final rawData = await file.readAsString();
-        data = CsvToListConverter().convert(rawData);
-      } else if (filePath.endsWith('.xlsx') || filePath.endsWith('.xls')) {
-        final bytes = file.readAsBytesSync();
-        final excel = Excel.decodeBytes(bytes);
-        data = excel.tables[excel.tables.keys.first]!.rows;
-      } else {
-        throw Exception('Unsupported file type');
-      }
-
-      if (onProgress != null) {
-        onProgress(0.5); // Halfway through parsing
-      }
-
-      // Send parsed data as JSON
-      final uri = Uri.parse('$baseUrl/analyze');
+      // Send JSON to Flask
       final response = await http.post(
-        uri,
-        headers: {'Content-Type': 'application/json'},
-        body: jsonEncode({'data': data}),
+        Uri.parse(backendUrl),
+        headers: {"Content-Type": "application/json"},
+        body: dataJson,
       );
 
-      if (onProgress != null) {
-        onProgress(1.0); // Complete
-      }
-
       if (response.statusCode == 200) {
-        return DataAnalysis.fromJson(jsonDecode(response.body));
+        final analysisResult = jsonDecode(response.body);
+        return DataAnalysis.fromJson(analysisResult);
       } else {
-        throw Exception('Failed to analyze file: ${response.body}');
+        throw Exception("Error from Flask: ${response.body}");
       }
     } catch (e) {
-      throw Exception('Error analyzing file: $e');
+      print('Error analyzing data: $e');
+      return null;
     }
   }
 }
