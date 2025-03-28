@@ -9,7 +9,7 @@ import 'package:flutter/foundation.dart'; // For debugPrint
 
 class AnalysisService {
   // Use your actual backend URL if deployed, otherwise keep localhost
-  final String backendUrl = "http://127.0.0.1:5000/api/analyze";
+  final String backendUrl = "http://192.168.178.53:5000/api/analyze";
 
   // Accepts parsed data directly
   Future<DataAnalysis?> analyzeData(
